@@ -37,6 +37,7 @@ Route::group(
     ],
     function ($router) {
         Route::get('/entries', [EntryController::class, 'index']);
+        Route::post('/entries', [EntryController::class, 'storeOne']);
 
         Route::get('/user/{userId}/entries', [UserController::class, 'getEntries']);
     }

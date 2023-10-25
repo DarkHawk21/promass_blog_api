@@ -8,7 +8,8 @@ class Entry extends Model
 {
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'user_id',
     ];
 
     public function author()
