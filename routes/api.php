@@ -36,7 +36,7 @@ Route::group(
         'prefix' => 'v1'
     ],
     function ($router) {
-        Route::get('/entries', [EntryController::class, 'index']);
+        Route::get('/entries', [EntryController::class, 'search']);
         Route::post('/entries', [EntryController::class, 'storeOne']);
 
         Route::get('/user/{userId}/entries', [UserController::class, 'getEntries']);

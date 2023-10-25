@@ -19,13 +19,27 @@ class EntryController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['index']]);
+        $this->middleware('auth:api', ['except' => ['search']]);
     }
 
-    public function index()
+    public function search(Request $request)
     {
         try {
-            $entries = Entry::get();
+            $entries = Entry::query();
+
+            if ($title = $request->input('title', NULL)) {
+                $entries->where('title', 'LIKE', '%'.$title.'%');
+            }
+
+            if ($content = $request->input('content', NULL)) {
+                $entries->where('content', 'LIKE', '%'.$content.'%');
+            }
+
+            if ($authorId = $request->input('author_id', NULL)) {
+                $entries->where('user_id', $authorId);
+            }
+
+            $entries = $entries->get();
 
             return response()->json($entries);
         } catch(Exception $e) {
