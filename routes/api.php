@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\UserController;
+use App\Http\Controllers\Api\V1\EntryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::group(
         'prefix' => 'v1'
     ],
     function ($router) {
+        Route::get('/entries', [EntryController::class, 'index']);
+
         Route::get('/user/{userId}/entries', [UserController::class, 'getEntries']);
     }
 );

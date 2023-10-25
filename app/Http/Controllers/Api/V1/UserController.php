@@ -32,7 +32,7 @@ class UserController extends Controller
                 [
                     'errorMessage' => $e->getMessage()
                 ],
-                401
+                400
             );
         }
     }
