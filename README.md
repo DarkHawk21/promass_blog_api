@@ -43,4 +43,4 @@
 
 <p>La API cuenta con una colección de <a href="https://www.postman.com/" target="_blank">POSTMAN</a> que nos permite conocer todos los endpoints que tiene disponibles, así como probar cada uno de ellos y saber qué necesito para poder usarlos.</p>
 
-<p>Para descargar la colección solo necesitas ir <a href="https://github.com/DarkHawk21/promass_blog_api/README/postman/Promass_blog_api.postman_collection.json" target="_blank">aquí</a>.</p>
+<p>Para descargar la colección solo necesitas ir <a href="https://github.com/DarkHawk21/promass_blog_api/blob/main/README/postman/Promass_blog_api.postman_collection.json" target="_blank">aquí</a>.</p>
