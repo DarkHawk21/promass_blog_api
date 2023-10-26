@@ -40,8 +40,7 @@ Route::group(
         Route::get('/entries/{entryId}', [EntryController::class, 'getOne']);
         Route::post('/entries', [EntryController::class, 'storeOne']);
 
-        Route::get('/users-who-has-entries', [UserController::class, 'getUsersWhoHasEntries'])
-            ->named('getUsersWhoHasEntries');
+        Route::get('/users-who-has-entries', [UserController::class, 'getUsersWhoHasEntries']);
         Route::get('/user/{userId}/entries', [UserController::class, 'getEntries']);
     }
 );

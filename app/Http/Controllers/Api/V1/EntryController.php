@@ -8,7 +8,6 @@ use Exception;
 use App\Models\Entry;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class EntryController extends Controller
@@ -19,7 +18,10 @@ class EntryController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['search']]);
+        $this->middleware('auth:api', ['except' => [
+            'search',
+            'getOne'
+        ]]);
     }
 
     public function search(Request $request)

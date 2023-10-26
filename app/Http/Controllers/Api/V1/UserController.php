@@ -16,7 +16,10 @@ class UserController extends Controller
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['getUsersWhoHasEntries']]);
+        $this->middleware('auth:api', ['except' => [
+            'getEntries',
+            'getUsersWhoHasEntries'
+        ]]);
     }
 
     public function getEntries($userId)
