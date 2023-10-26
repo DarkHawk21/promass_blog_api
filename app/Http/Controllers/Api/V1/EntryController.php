@@ -27,19 +27,17 @@ class EntryController extends Controller
         try {
             $entries = Entry::query();
 
-            if ($title = $request->input('title', NULL)) {
-                $entries->where('title', 'LIKE', '%'.$title.'%');
-            }
-
-            if ($content = $request->input('content', NULL)) {
-                $entries->where('content', 'LIKE', '%'.$content.'%');
+            if ($keyword = $request->input('keyword', NULL)) {
+                $entries->where('title', 'LIKE', '%'.$keyword.'%')
+                    ->orWhere('content', 'LIKE', '%'.$keyword.'%');
             }
 
             if ($authorId = $request->input('author_id', NULL)) {
                 $entries->where('user_id', $authorId);
             }
 
-            $entries = $entries->get();
+            $entries = $entries->with(['author'])
+                ->get();
 
             return response()->json($entries);
         } catch(Exception $e) {
