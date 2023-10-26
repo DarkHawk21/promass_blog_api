@@ -37,6 +37,7 @@ Route::group(
     ],
     function ($router) {
         Route::get('/entries', [EntryController::class, 'search']);
+        Route::get('/entries/{entryId}', [EntryController::class, 'getOne']);
         Route::post('/entries', [EntryController::class, 'storeOne']);
 
         Route::get('/users-who-has-entries', [UserController::class, 'getUsersWhoHasEntries'])

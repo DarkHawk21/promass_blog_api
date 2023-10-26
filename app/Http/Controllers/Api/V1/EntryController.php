@@ -37,9 +37,28 @@ class EntryController extends Controller
             }
 
             $entries = $entries->with(['author'])
+                ->orderBy('created_at', 'DESC')
                 ->get();
 
             return response()->json($entries);
+        } catch(Exception $e) {
+            return response()->json(
+                [
+                    'errorMessage' => $e->getMessage()
+                ],
+                400
+            );
+        }
+    }
+
+    public function getOne($entryId)
+    {
+        try {
+            $entry = Entry::with(['author'])
+                ->where('id', $entryId)
+                ->firstOrFail();
+
+            return response()->json($entry);
         } catch(Exception $e) {
             return response()->json(
                 [
