@@ -55,7 +55,6 @@ class EntryController extends Controller
         $messages = [
             'title.required' => "Se debe ingresar un título.",
             'content.required' => "Se debe ingresar un contenido.",
-            'author_id.required' => "Se debe ingresar el identificador del autor."
         ];
 
         $validator = Validator::make(
@@ -63,7 +62,6 @@ class EntryController extends Controller
             [
                 'title' => 'required',
                 'content' => 'required',
-                'author_id' => 'required'
             ],
             $messages
         );
@@ -75,7 +73,7 @@ class EntryController extends Controller
         DB::beginTransaction();
 
         try {
-            $author = User::findOrFail($request->input('author_id'));
+            $author = auth()->user();
 
             $newEntry = Entry::create(
                 [
